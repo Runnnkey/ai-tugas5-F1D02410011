@@ -1,0 +1,33 @@
+{
+  "judul": "Diagnosis masalah kualitas air kolam lele",
+  "batas": "Aturan disusun dari dua artikel jurnal (Haliyani 2020; Pujiharsono & Kurnianto 2020) tentang budidaya lele di kolam bundar dan kolam bioflok. Ambang batas di literatur berbeda-beda antar penulis dan antar jenis kolam, jadi hasil program hanya saran awal untuk pembudidaya lele skala kecil-menengah, bukan keputusan akhir. Ukur ulang parameter air dan konsultasikan ke penyuluh perikanan sebelum bertindak.",
+  "sumber": {
+    "S1": "Haliyani (2020). Performansi Kinerja Budidaya Pembesaran Ikan Lele Sangkuriang (Clarias gariepinus) di CV. Dampo Awang, Kecamatan Jatinangor, Kabupaten Sumedang, Jawa Barat. Buletin Jalanidhitah Sarva Jivitam 2(1):1-11. Politeknik Ahli Usaha Perikanan (KKP). https://ejournal-balitbang.kkp.go.id/index.php/JSJ/article/download/8445/7400",
+    "S2": "Pujiharsono, H. & Kurnianto, D. (2020). Sistem inferensi fuzzy Mamdani untuk menentukan tingkat kualitas air pada kolam bioflok dalam budidaya ikan lele. Jurnal Teknologi dan Sistem Komputer 8(2):84-88. DOI 10.14710/jtsiskom.8.2.2020.84-88. https://jtsiskom.undip.ac.id/article/download/13209/12555"
+  },
+  "pertanyaan": {
+    "suhu air di bawah 25 derajat C": "Apakah suhu air di bawah 25 derajat C?",
+    "suhu air di atas 30 derajat C": "Apakah suhu air di atas 30 derajat C?",
+    "pH air di bawah 6,5": "Apakah pH air di bawah 6,5?",
+    "pH air di atas 8,5": "Apakah pH air di atas 8,5?",
+    "oksigen terlarut di bawah 3 mg/L": "Apakah oksigen terlarut (DO) di bawah 3 mg/L?",
+    "air kolam berwarna pekat": "Apakah air kolam berwarna pekat?",
+    "sisa pakan menumpuk": "Apakah sisa pakan menumpuk di kolam?",
+    "nitrit di atas 0,05 mg/L": "Apakah kadar nitrit di atas 0,05 mg/L?",
+    "suhu air berubah-ubah drastis": "Apakah suhu air berubah-ubah drastis (misalnya pagi dan sore jauh berbeda)?",
+    "tubuh ikan berdarah": "Apakah tampak pendarahan pada tubuh ikan?",
+    "nafsu makan ikan menurun": "Apakah nafsu makan ikan menurun?"
+  },
+  "aturan": [
+    {"id": "R1", "jika": ["suhu air di bawah 25 derajat C", "suhu air di atas 30 derajat C"], "mode": "atau", "maka": "suhu tidak layak", "sumber": ["S1", "S2"]},
+    {"id": "R2", "jika": ["pH air di bawah 6,5", "pH air di atas 8,5"], "mode": "atau", "maka": "pH tidak layak", "sumber": ["S2"]},
+    {"id": "R3", "jika": ["oksigen terlarut di bawah 3 mg/L"], "mode": "dan", "maka": "oksigen rendah", "sumber": ["S1"]},
+    {"id": "R4", "jika": ["air kolam berwarna pekat", "sisa pakan menumpuk"], "mode": "atau", "maka": "amonia berpotensi tinggi", "sumber": ["S1"]},
+    {"id": "R5", "jika": ["oksigen rendah", "amonia berpotensi tinggi"], "mode": "dan", "maka": "limbah beracun menumpuk", "sumber": ["S1", "S2"]},
+    {"id": "R6", "jika": ["nitrit di atas 0,05 mg/L"], "mode": "dan", "maka": "nitrit melebihi ambang batas", "sumber": ["S1"]},
+    {"id": "R7", "jika": ["suhu air berubah-ubah drastis", "tubuh ikan berdarah"], "mode": "dan", "maka": "infeksi bakteri akibat suhu tidak stabil", "sumber": ["S1"]},
+    {"id": "R8", "jika": ["suhu tidak layak", "pH tidak layak", "oksigen rendah"], "mode": "atau", "maka": "kondisi air tidak layak", "sumber": ["S2"]},
+    {"id": "R9", "jika": ["kondisi air tidak layak", "nafsu makan ikan menurun"], "mode": "dan", "maka": "ikan stres dan pertumbuhan terhambat", "sumber": ["S2"]},
+    {"id": "R10", "jika": ["limbah beracun menumpuk", "ikan stres dan pertumbuhan terhambat"], "mode": "dan", "maka": "risiko kematian ikan tinggi", "sumber": ["S1", "S2"]}
+  ]
+}
