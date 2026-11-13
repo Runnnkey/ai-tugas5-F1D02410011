@@ -1,6 +1,6 @@
-"""Sistem pakar sederhana: diagnosis kualitas air kolam lele (Forward Chaining).
+"""Diagnosis penyebab telur ayam gagal menetas pada mesin tetas.
 
-Jalankan: python main.py            (memakai kb_lele.json)
+Jalankan: python main.py            (memakai kb_tetas.json)
           python main.py kb_lain.json
 """
 import json
@@ -56,7 +56,7 @@ def jejak_alasan(hasil, asal, memori, urut):
 
 
 def main():
-    kb = muat_kb(sys.argv[1] if len(sys.argv) > 1 else "kb_lele.json")
+    kb = muat_kb(sys.argv[1] if len(sys.argv) > 1 else "kb_tetas.json")
     print(kb["judul"])
     print("Jawab y/t.")
 

@@ -1,0 +1,31 @@
+{
+  "judul": "Diagnosis penyebab telur ayam gagal menetas pada mesin tetas",
+  "batas": "Aturan disusun dari tiga artikel jurnal universitas (Diniati dkk. 2016; Ardianzah dkk. 2025; Aldiyanti dkk. 2025) tentang penetasan telur unggas. Batas suhu dan kelembapan dirujuk ke penetasan ayam (S2, S3); S1 meneliti itik dan dipakai hanya untuk prinsip umum. Angka di literatur berbeda antar jenis unggas, mesin, dan penulis, jadi hasil program hanya saran awal untuk peternak skala kecil dengan mesin tetas sederhana, bukan keputusan akhir. Periksa ulang kondisi mesin dan telur, dan konsultasikan ke penyuluh peternakan bila gagal tetas berulang.",
+  "sumber": {
+    "S1": "Diniati, Rukmiasih & Afnan, R. (2016). Pengaruh Waktu Dimulainya Pendinginan Selama Penetasan terhadap Daya Tetas Telur Itik Persilangan Cihateup Alabio. Jurnal Ilmu Produksi dan Teknologi Hasil Peternakan 4(1):251-256 (IPB). https://journal.ipb.ac.id/index.php/ipthp/article/download/15737/11601",
+    "S2": "Ardianzah, F., Humaidah, N. & Wadjdi, F. (2025). Pengaruh Umur Induk terhadap Breakout Infertil dan Un Hatch Telur Tetas di Perusahaan Pembibitan Komersial. Dinamika Rekasatwa 8(1):66-69 (Fakultas Peternakan, Universitas Islam Malang). https://jim.unisma.ac.id/index.php/fapet/article/download/26953/20394",
+    "S3": "Aldiyanti, A., Rizkuna, A., Manullang, J. R. & Fajrih, N. (2025). Optimasi Penetasan Ayam Kampung: Pengaruh Variasi Bobot Telur terhadap Fertilitas dan Daya Tetas. Aves: Jurnal Ilmu Peternakan 19(2):7-11 (Universitas Mulawarman). https://ejournal.unisbablitar.ac.id/index.php/aves/article/download/5280/2488/21049"
+  },
+  "pertanyaan": {
+    "suhu mesin tetas di bawah 37 derajat C": "Apakah suhu mesin tetas di bawah 37 derajat C?",
+    "suhu mesin tetas di atas 38 derajat C": "Apakah suhu mesin tetas di atas 38 derajat C?",
+    "kelembapan hari 1-18 di bawah 55 persen": "Apakah kelembapan pada hari ke-1 sampai 18 di bawah 55 persen?",
+    "kelembapan hari 19-21 di bawah 65 persen": "Apakah kelembapan pada hari ke-19 sampai 21 di bawah 65 persen?",
+    "telur disimpan lebih dari 3 hari sebelum ditetaskan": "Apakah telur disimpan lebih dari 3 hari sebelum ditetaskan?",
+    "kerabang telur tipis atau retak": "Apakah kerabang telur tipis atau retak?",
+    "telur kotor atau mesin tidak difumigasi": "Apakah telur kotor atau mesin tetas tidak difumigasi/dibersihkan sebelum dipakai?",
+    "candling hari ke-7 telur tampak terang tanpa gumpalan hitam": "Apakah pada candling hari ke-7 ada telur yang tampak terang tanpa gumpalan hitam?",
+    "telur berukuran sangat besar diduga kuning ganda": "Apakah ada telur berukuran sangat besar (diduga berkuning telur ganda)?"
+  },
+  "aturan": [
+    {"id": "R1", "jika": ["suhu mesin tetas di bawah 37 derajat C", "suhu mesin tetas di atas 38 derajat C"], "mode": "atau", "maka": "suhu tidak sesuai", "sumber": ["S1", "S2", "S3"]},
+    {"id": "R2", "jika": ["kelembapan hari 1-18 di bawah 55 persen", "kelembapan hari 19-21 di bawah 65 persen"], "mode": "atau", "maka": "kelembapan tidak sesuai", "sumber": ["S1", "S2", "S3"]},
+    {"id": "R3", "jika": ["suhu tidak sesuai", "kelembapan tidak sesuai"], "mode": "atau", "maka": "kondisi inkubasi tidak sesuai", "sumber": ["S1", "S2"]},
+    {"id": "R4", "jika": ["telur disimpan lebih dari 3 hari sebelum ditetaskan", "kerabang telur tipis atau retak"], "mode": "atau", "maka": "kualitas telur tetas menurun", "sumber": ["S2", "S3"]},
+    {"id": "R5", "jika": ["telur kotor atau mesin tidak difumigasi"], "mode": "dan", "maka": "risiko infeksi mikroba", "sumber": ["S2", "S3"]},
+    {"id": "R6", "jika": ["kondisi inkubasi tidak sesuai", "kualitas telur tetas menurun", "risiko infeksi mikroba"], "mode": "atau", "maka": "risiko kematian embrio tinggi", "sumber": ["S1", "S2", "S3"]},
+    {"id": "R7", "jika": ["kelembapan hari 19-21 di bawah 65 persen"], "mode": "dan", "maka": "anak ayam sulit keluar dari kerabang", "sumber": ["S1", "S2"]},
+    {"id": "R8", "jika": ["candling hari ke-7 telur tampak terang tanpa gumpalan hitam"], "mode": "dan", "maka": "telur infertil", "sumber": ["S2", "S3"]},
+    {"id": "R9", "jika": ["telur berukuran sangat besar diduga kuning ganda"], "mode": "dan", "maka": "telur tidak layak tetas", "sumber": ["S3"]}
+  ]
+}
